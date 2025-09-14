@@ -203,28 +203,57 @@
   </div>
 
   <script>
-    // === Cuenta regresiva ===
-    const countdown = document.getElementById("countdown");
-    const weddingDate = new Date("2025-12-12T20:00:00-03:00").getTime();
+  // === Cuenta regresiva corregida ===
+  const countdown = document.getElementById("countdown");
 
-    function updateCountdown(){
-      const now = new Date().getTime();
-      const distance = weddingDate - now;
+  // Fecha exacta: 12 de diciembre de 2025, 20:00 hora Argentina (-3 GMT)
+  const weddingDate = new Date("December 12, 2025 20:00:00 GMT-0300").getTime();
 
-      if (distance <= 0){
-        countdown.innerHTML = "¡Hoy es el gran día! 🎉<small>Nos vemos en la ceremonia</small>";
-        return;
-      }
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = weddingDate - now;
 
-      const days = Math.floor(distance / (1000*60*60*24));
-      const hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
-      const minutes = Math.floor((distance % (1000*60*60))/(1000*60));
-      const seconds = Math.floor((distance % (1000*60))/1000);
-
-      countdown.innerHTML = ${days} días · ${hours}h ${minutes}m ${seconds}s <small>Hasta la ceremonia</small>;
+    if (distance <= 0) {
+      countdown.innerHTML = "¡Hoy es el gran día! 🎉<small>Nos vemos en la ceremonia</small>";
+      return;
     }
-    setInterval(updateCountdown,1000);
-    updateCountdown();
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    countdown.innerHTML = ${days} días · ${hours}h ${minutes}m ${seconds}s <small>Hasta la ceremonia</small>;
+  }
+
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+
+  // === Música de fondo ===
+  const audio = document.getElementById('bg-audio');
+  const btn = document.getElementById('musicToggle');
+  function tryPlay(){
+    let playPromise = audio.play();
+    if(playPromise!==undefined){
+      playPromise.then(()=>{
+        btn.style.display='none';
+      }).catch(()=>{
+        btn.style.display='inline-block';
+        btn.textContent='Reproducir música';
+      });
+    }
+  }
+  btn.addEventListener('click',()=>{
+    if(audio.paused){
+      audio.play();
+      btn.textContent='Pausar música';
+    } else {
+      audio.pause();
+      btn.textContent='Reproducir música';
+    }
+  });
+  window.addEventListener('load',tryPlay);
+</script>
 
     // === Manejo de música ===
     const audio = document.getElementById('bg-audio');
