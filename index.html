@@ -2,115 +2,111 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Boda Federico & Anahel</title>
-  <!-- Tipografías elegantes -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación de Casamiento</title>
   <style>
     body {
-      font-family: 'Lato', sans-serif;
-      background: #fffdf9;
+      margin: 0;
+      font-family: "Helvetica Neue", sans-serif;
+      background-color: #fafafa;
       color: #333;
       text-align: center;
-      margin: 0;
-      padding: 0;
     }
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3em;
-      margin-top: 40px;
-      letter-spacing: 2px;
-      color: #444;
-    }
-    h2 {
-      font-family: 'Lato', sans-serif;
-      font-weight: 300;
-      font-size: 1.5em;
-      margin: 10px 0 30px;
-      color: #777;
-    }
-    #countdown {
-      font-size: 2em;
-      margin: 20px 0;
-      font-weight: bold;
-      color: #b8860b; /* dorado */
-    }
-    section {
+
+    .card {
+      border: 2px solid #e5dcd0;
+      border-radius: 12px;
+      padding: 30px;
       margin: 30px auto;
       max-width: 500px;
-      border-top: 1px solid #e5e5e5;
-      padding-top: 20px;
+      background-color: #fff;
+      box-shadow: 0px 4px 12px rgba(0,0,0,0.05);
     }
-    p {
-      font-size: 1.2em;
-      margin: 8px 0;
+
+    h1 {
+      font-size: 2.2em;
+      color: #6b5b4b;
+      margin-bottom: 10px;
     }
-    a {
-      display: inline-block;
-      margin: 15px;
-      padding: 12px 24px;
-      border: 2px solid #b8860b;
-      border-radius: 30px;
-      text-decoration: none;
-      color: #b8860b;
+
+    h2 {
+      font-size: 1.3em;
+      font-weight: normal;
+      color: #8c7a6b;
+      margin: 10px 0 20px;
+    }
+
+    .details {
       font-size: 1em;
-      transition: all 0.3s ease;
+      line-height: 1.6;
+      margin: 20px 0;
+      color: #555;
     }
-    a:hover {
-      background: #b8860b;
+
+    .button {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 1em;
+      transition: 0.3s;
+    }
+
+    .btn-photos {
+      background-color: #e8d7cf;
+      color: #333;
+      border: 1px solid #d1bdb2;
+    }
+
+    .btn-photos:hover {
+      background-color: #d1bdb2;
       color: #fff;
     }
-    footer {
-      margin-top: 50px;
+
+    .btn-music {
+      background-color: #d7e8e2;
+      color: #333;
+      border: 1px solid #b2d1c1;
+    }
+
+    .btn-music:hover {
+      background-color: #b2d1c1;
+      color: #fff;
+    }
+
+    .footer {
+      margin-top: 20px;
       font-size: 0.9em;
       color: #777;
-      padding-bottom: 30px;
+    }
+
+    .line {
+      border-top: 1px solid #e5dcd0;
+      margin: 20px auto;
+      width: 60%;
     }
   </style>
 </head>
 <body>
-  <h1>Federico & Anahel</h1>
-  <h2>¡Nos casamos! 💍</h2>
-  <p><strong>12 de Diciembre de 2025</strong></p>
+  <div class="card">
+    <h1>Federico & Anahel</h1>
+    <h2>12 de Diciembre</h2>
+    <div class="line"></div>
+    <div class="details">
+      <p><strong>Ceremonia:</strong> Iglesia San Francisco Solano<br>
+      20hs · Mendoza esquina Avellaneda</p>
+      <p><strong>Recepción:</strong> Salón Villa Margherita<br>
+      21hs · José Hernández 2152</p>
+    </div>
 
-  <div id="countdown"></div>
+    <a href="https://photos.app.goo.gl/rmemgzee33QTvF9v5" class="button btn-photos" target="_blank">📸 Subí tus fotos</a>
+    <a href="https://open.spotify.com/playlist/0GgpcCKQAkDX0FIsYUZjC9?si=KmvRapj5TPe4ZBwHnaAbPw&pi=I5aw_ZYiTzGaM" class="button btn-music" target="_blank">🎵 Sumá tu música</a>
 
-  <section>
-    <p><strong>⛪ Ceremonia:</strong> 20:00 hs – Iglesia San Francisco Solano</p>
-    <p><em>Mendoza esq. Avellaneda</em></p>
-  </section>
-
-  <section>
-    <p><strong>🎉 Fiesta:</strong> 21:00 hs – Salón Villa Margherita</p>
-    <p><em>José Hernández 2152</em></p>
-  </section>
-
-  <a href="https://photos.google.com/share/AF1QipOEcU0QJ9OpFCkHJMW-dggOqI3zwzuU9SZTgRTfh2ruB5lPewW7SJIc04Kh-Oku0Q?key=NnhXTDZUZUliWmh1Q2htd1QxN1pUYWRqeEtzcVJB">📸 Subí tus fotos</a>
-  <a href="https://open.spotify.com/playlist/0GgpcCKQAkDX0FIsYUZjC9?si=KmvRapj5TPe4ZBwHnaAbPw&pi=I5aw_ZYiTzGaM" target="_blank">🎶 Sugerí música</a>
-
-  <footer>
-    Con mucho amor, ¡los esperamos en nuestra boda!
-  </footer>
-
-  <script>
-    // Fecha del casamiento
-    const weddingDate = new Date("Dec 12, 2025 20:00:00").getTime();
-    const countdownEl = document.getElementById("countdown");
-
-    setInterval(() => {
-      const now = new Date().getTime();
-      const distance = weddingDate - now;
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      if (distance > 0) {
-        countdownEl.innerHTML = days + " días " + hours + "h " + minutes + "m " + seconds + "s";
-      } else {
-        countdownEl.innerHTML = "¡Hoy es el gran día! 🎉";
-      }
-    }, 1000);
-  </script>
+    <div class="line"></div>
+    <div class="footer">
+      <p>Código de vestimenta: Formal</p>
+    </div>
+  </div>
 </body>
 </html>
