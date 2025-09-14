@@ -8,9 +8,9 @@
     :root{
       --bg:#fbfaf8;
       --card:#fff;
-      --accent-1:#e9dcd1; /* fotos */
-      --accent-2:#dbeee8; /* música */
-      --accent-3:#f5ead0; /* rsvp */
+      --accent-1:#e9dcd1;
+      --accent-2:#dbeee8;
+      --accent-3:#f5ead0;
       --text:#3a3230;
       --muted:#7c6f67;
       --frame:#e7dfd5;
@@ -27,7 +27,6 @@
       justify-content:center;
       padding:20px;
     }
-
     .card{
       width:100%;
       max-width:700px;
@@ -39,7 +38,6 @@
       border:1px solid var(--frame);
       overflow:hidden;
     }
-
     /* detalles florales decorativos */
     .card::before,
     .card::after{
@@ -50,7 +48,6 @@
     }
     .card::before{ top:12px; left:16px; }
     .card::after{ bottom:12px; right:16px; transform:rotate(15deg); }
-
     header{ text-align:center; margin-bottom:8px }
     .names{
       font-size:clamp(1.8rem,2.8vw,2.6rem);
@@ -63,7 +60,6 @@
       color:var(--muted);
       font-size:clamp(1rem,1.8vw,1.2rem);
     }
-
     .divider{
       height:1px;
       background:linear-gradient(90deg, transparent, var(--frame), transparent);
@@ -71,7 +67,6 @@
       width:70%;
       border-radius:4px;
     }
-
     .info{
       color:var(--muted);
       font-size:1rem;
@@ -79,7 +74,6 @@
       text-align:center;
       margin-bottom:16px;
     }
-
     /* contador */
     .countdown{
       background:linear-gradient(180deg, rgba(107,86,75,0.04), rgba(107,86,75,0.02));
@@ -94,7 +88,6 @@
       min-width:240px;
     }
     .countdown small{display:block;font-size:0.8rem;color:var(--muted);font-weight:500;margin-top:6px}
-
     /* botones */
     .buttons{
       margin-top:14px;
@@ -122,13 +115,10 @@
     .btn-photos{ background:var(--accent-1); border-color: #dccbbf;}
     .btn-music{ background:var(--accent-2); border-color:#bcd3ca}
     .btn-rsvp{  background:var(--accent-3); border-color:#e2cf9f}
-
     .button:hover{ transform:translateY(-3px); box-shadow:0 6px 16px rgba(0,0,0,0.06) }
-
     /* reproductor */
     .audio-wrap{ margin-top:18px; display:flex; flex-direction:column; align-items:center; gap:8px }
     audio{ width:90%; max-width:420px; border-radius:8px }
-
     .music-toggle{
       display:none;
       padding:10px 14px;
@@ -138,9 +128,7 @@
       cursor:pointer;
       font-weight:600;
     }
-
     .footer{ margin-top:22px; text-align:center; color:var(--muted); font-size:0.95rem }
-
     /* responsive */
     @media (max-width:540px){
       .card{ padding:20px 14px }
@@ -154,26 +142,21 @@
       <h1 class="names">Federico &amp; Anahel</h1>
       <div class="date">12 de diciembre de 2025</div>
     </header>
-
     <div class="divider"></div>
-
     <!-- Cuenta regresiva -->
     <div class="countdown" id="countdown">
       Cargando...
       <small>Hasta la ceremonia</small>
     </div>
-
     <!-- Info -->
     <div class="info">
       <p><strong>Ceremonia:</strong><br>
       Iglesia San Francisco Solano<br>
       20:00 hs · Mendoza esquina Avellaneda</p>
-
       <p><strong>Recepción:</strong><br>
       Salón Villa Margherita<br>
       21:00 hs · José Hernández 2152</p>
     </div>
-
     <!-- Botones -->
     <div class="buttons">
       <a class="button btn-photos" href="https://photos.app.goo.gl/rmemgzee33QTvF9v5" target="_blank">
@@ -182,11 +165,10 @@
       <a class="button btn-music" href="https://open.spotify.com/playlist/0GgpcCKQAkDX0FIsYUZjC9?si=KmvRapj5TPe4ZBwHnaAbPw&pi=I5aw_ZYiTzGaM" target="_blank">
         🎵 Sumá tu música
       </a>
-      <a class="button btn-rsvp" href="https://forms.gle/ax1voVHAKjy3EUkv9" target="_blank">
+      <a class="button btn-rsvp" href="https://forms.gle/TEruNEH7WipabxwQ8" target="_blank">
         ✅ Confirmar asistencia
       </a>
     </div>
-
     <!-- Reproductor -->
     <div class="audio-wrap">
       <audio id="bg-audio" controls loop preload="none">
@@ -195,7 +177,6 @@
       </audio>
       <button id="musicToggle" class="music-toggle">Reproducir música</button>
     </div>
-
     <div class="divider"></div>
     <div class="footer">
       Código de vestimenta: <strong>Formal</strong>
@@ -203,59 +184,26 @@
   </div>
 
   <script>
-  // === Cuenta regresiva corregida ===
-  const countdown = document.getElementById("countdown");
-
-  // Fecha exacta: 12 de diciembre de 2025, 20:00 hora Argentina (-3 GMT)
-  const weddingDate = new Date("December 12, 2025 20:00:00 GMT-0300").getTime();
-
-  function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = weddingDate - now;
-
-    if (distance <= 0) {
-      countdown.innerHTML = "¡Hoy es el gran día! 🎉<small>Nos vemos en la ceremonia</small>";
-      return;
+    // === Cuenta regresiva corregida ===
+    const countdown = document.getElementById("countdown");
+    const weddingDate = new Date("December 12, 2025 20:00:00 GMT-0300").getTime();
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+      if (distance <= 0) {
+        countdown.innerHTML = "¡Hoy es el gran día! 🎉<small>Nos vemos en la ceremonia</small>";
+        return;
+      }
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      countdown.innerHTML = ${days} días · ${hours}h ${minutes}m ${seconds}s <small>Hasta la ceremonia</small>;
     }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    countdown.innerHTML = ${days} días · ${hours}h ${minutes}m ${seconds}s <small>Hasta la ceremonia</small>;
-  }
-
-  setInterval(updateCountdown, 1000);
-  updateCountdown();
-
-  // === Música de fondo ===
-  const audio = document.getElementById('bg-audio');
-  const btn = document.getElementById('musicToggle');
-  function tryPlay(){
-    let playPromise = audio.play();
-    if(playPromise!==undefined){
-      playPromise.then(()=>{
-        btn.style.display='none';
-      }).catch(()=>{
-        btn.style.display='inline-block';
-        btn.textContent='Reproducir música';
-      });
-    }
-  }
-  btn.addEventListener('click',()=>{
-    if(audio.paused){
-      audio.play();
-      btn.textContent='Pausar música';
-    } else {
-      audio.pause();
-      btn.textContent='Reproducir música';
-    }
-  });
-  window.addEventListener('load',tryPlay);
-</script>
-
-    // === Manejo de música ===
+    // === Música de fondo ===
     const audio = document.getElementById('bg-audio');
     const btn = document.getElementById('musicToggle');
     function tryPlay(){
