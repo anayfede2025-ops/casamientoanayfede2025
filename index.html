@@ -1,232 +1,140 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Invitación - Federico & Anahel</title>
+  <title>Casamiento - Federico & Anahel</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+
   <style>
     :root{
-      --bg:#fbfaf8;
-      --card:#fff;
-      --accent-1:#e9dcd1;
-      --accent-2:#dbeee8;
-      --accent-3:#f5ead0;
-      --text:#3a3230;
-      --muted:#7c6f67;
-      --frame:#e7dfd5;
-      --radius:16px;
+      --bg:#fff;
+      --card:#FAFAFA;
+      --accent:#333;
+      --muted:#777;
+      --accent-soft:#f3f3f5;
+      --radius:14px;
+      --maxw:600px;
     }
-    *{box-sizing:border-box}
     body{
       margin:0;
-      font-family: "Helvetica Neue", Arial, sans-serif;
-      background: var(--bg);
-      color:var(--text);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:20px;
+      font-family:'Montserrat', sans-serif;
+      background:linear-gradient(180deg,#fff 0%,#fbfbfd 100%);
+      color:var(--accent);
     }
-    .card{
-      width:100%;
-      max-width:700px;
-      background:var(--card);
-      border-radius:var(--radius);
-      padding:28px 20px;
-      position:relative;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-      border:1px solid var(--frame);
-      overflow:hidden;
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:12px;}
+    .card{background:var(--card);border-radius:var(--radius);box-shadow:0 8px 30px rgba(0,0,0,0.06);overflow:hidden;}
+    .cover{position:relative;height:70vw;max-height:420px;overflow:hidden;}
+    .cover img{width:100%;height:100%;object-fit:cover;}
+    .title-plate{position:absolute;bottom:12px;left:12px;background:rgba(255,255,255,0.85);padding:10px 16px;border-radius:10px;}
+    .title-plate h1{margin:0;font-family:'Great Vibes',cursive;font-weight:400;font-size:26px;}
+    .title-plate p{margin:0;font-size:14px;color:var(--muted);}
+    .lead{font-family:'Great Vibes',cursive;font-size:22px;margin:16px 0 8px;}
+    .map-sequence{display:flex;flex-direction:column;gap:14px;margin-top:14px;}
+    .step{display:flex;gap:12px;align-items:center;}
+    .step .icon{
+      width:44px;height:44px;border-radius:50%;
+      background:var(--accent-soft);
+      display:flex;align-items:center;justify-content:center;
+      font-size:20px;
     }
-    /* detalles florales decorativos */
-    .card::before,
-    .card::after{
-      content:"🌸";
-      position:absolute;
-      font-size:42px;
-      opacity:0.2;
-    }
-    .card::before{ top:12px; left:16px; }
-    .card::after{ bottom:12px; right:16px; transform:rotate(15deg); }
-    header{ text-align:center; margin-bottom:8px }
-    .names{
-      font-size:clamp(1.8rem,2.8vw,2.6rem);
-      color:#6b564a;
-      margin:0;
-      font-weight:600;
-    }
-    .date{
-      margin:6px 0 0;
-      color:var(--muted);
-      font-size:clamp(1rem,1.8vw,1.2rem);
-    }
-    .divider{
-      height:1px;
-      background:linear-gradient(90deg, transparent, var(--frame), transparent);
-      margin:20px auto;
-      width:70%;
-      border-radius:4px;
-    }
-    .info{
-      color:var(--muted);
-      font-size:1rem;
-      line-height:1.6;
-      text-align:center;
-      margin-bottom:16px;
-    }
-    /* contador */
-    .countdown{
-      background:linear-gradient(180deg, rgba(107,86,75,0.04), rgba(107,86,75,0.02));
-      border-radius:10px;
-      padding:12px 16px;
-      text-align:center;
-      color:#6b5b4b;
-      font-weight:600;
-      font-size:1.05rem;
-      margin:14px auto 22px;
-      width:fit-content;
-      min-width:240px;
-    }
-    .countdown small{display:block;font-size:0.8rem;color:var(--muted);font-weight:500;margin-top:6px}
-    /* botones */
-    .buttons{
-      margin-top:14px;
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      align-items:center;
-    }
-    .button{
-      width:100%;
-      max-width:320px;
-      padding:12px 16px;
-      border-radius:10px;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:8px;
-      font-weight:600;
-      color:var(--text);
-      border:1px solid transparent;
-      transition:all .18s ease;
-    }
-    .button:active{transform:translateY(1px)}
-    .btn-photos{ background:var(--accent-1); border-color: #dccbbf;}
-    .btn-music{ background:var(--accent-2); border-color:#bcd3ca}
-    .btn-rsvp{  background:var(--accent-3); border-color:#e2cf9f}
-    .button:hover{ transform:translateY(-3px); box-shadow:0 6px 16px rgba(0,0,0,0.06) }
-    /* reproductor */
-    .audio-wrap{ margin-top:18px; display:flex; flex-direction:column; align-items:center; gap:8px }
-    audio{ width:90%; max-width:420px; border-radius:8px }
-    .music-toggle{
-      display:none;
-      padding:10px 14px;
-      border-radius:999px;
-      border:1px solid var(--frame);
-      background:#fff;
-      cursor:pointer;
-      font-weight:600;
-    }
-    .footer{ margin-top:22px; text-align:center; color:var(--muted); font-size:0.95rem }
-    /* responsive */
-    @media (max-width:540px){
-      .card{ padding:20px 14px }
-      .button{ max-width:100% }
-    }
+    .step .txt{font-size:15px;}
+    .step .txt strong{font-family:'Great Vibes',cursive;font-size:20px;font-weight:400;display:block;}
+    .step .txt small{display:block;font-size:12px;color:var(--muted);margin-top:4px;}
+    .pathviz{margin:0 0 12px 56px;width:calc(100% - 56px);height:50px;}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0;}
+    .btn{background:#111;color:#fff;padding:10px 14px;border-radius:10px;text-decoration:none;font-size:14px;flex:1;text-align:center;}
+    .btn.ghost{background:transparent;border:1px solid #e6e6e9;color:var(--accent);}
+    .countdown{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;}
+    .countdown .unit{background:#fff;border-radius:10px;padding:8px;min-width:70px;text-align:center;box-shadow:0 6px 16px rgba(0,0,0,0.04);}
+    .countdown .num{font-size:18px;font-weight:700;}
+    .countdown .lbl{font-size:11px;color:var(--muted);}
+    .music audio{width:100%;max-width:100%;margin-top:12px;}
+    .footer{padding:12px;font-size:12px;color:var(--muted);text-align:center;}
   </style>
 </head>
 <body>
-  <div class="card">
-    <header>
-      <h1 class="names">Federico &amp; Anahel</h1>
-      <div class="date">12 de diciembre de 2025</div>
-    </header>
-    <div class="divider"></div>
-    <!-- Cuenta regresiva -->
-    <div class="countdown" id="countdown">
-      Cargando...
-      <small>Hasta la ceremonia</small>
-    </div>
-    <!-- Info -->
-    <div class="info">
-      <p><strong>Ceremonia:</strong><br>
-      Iglesia San Francisco Solano<br>
-      20:00 hs · Mendoza esquina Avellaneda</p>
-      <p><strong>Recepción:</strong><br>
-      Salón Villa Margherita<br>
-      21:00 hs · José Hernández 2152</p>
-    </div>
-    <!-- Botones -->
-    <div class="buttons">
-      <a class="button btn-photos" href="https://photos.app.goo.gl/rmemgzee33QTvF9v5" target="_blank">
-        📸 Subí tus fotos
-      </a>
-      <a class="button btn-music" href="https://open.spotify.com/playlist/0GgpcCKQAkDX0FIsYUZjC9?si=KmvRapj5TPe4ZBwHnaAbPw&pi=I5aw_ZYiTzGaM" target="_blank">
-        🎵 Sumá tu música
-      </a>
-      <a class="button btn-rsvp" href="https://forms.gle/TEruNEH7WipabxwQ8" target="_blank">
-        ✅ Confirmar asistencia
-      </a>
-    </div>
-    <!-- Reproductor -->
-    <div class="audio-wrap">
-      <audio id="bg-audio" controls loop preload="none">
-        <source src="AQUI_LINK_MUSICA.mp3" type="audio/mpeg">
-        Tu navegador no soporta audio.
-      </audio>
-      <button id="musicToggle" class="music-toggle">Reproducir música</button>
-    </div>
-    <div class="divider"></div>
-    <div class="footer">
-      Código de vestimenta: <strong>Formal</strong>
+  <div class="wrap">
+    <div class="card">
+      <!-- Portada -->
+      <div class="cover">
+        <img src="TU-FOTO-AQUI.jpg" alt="Federico & Anahel">
+        <div class="title-plate">
+          <h1>Casamiento de Federico y Anahel</h1>
+          <p>Nos gustaría que compartas este momento tan especial con nosotros</p>
+        </div>
+      </div>
+
+      <div style="padding:16px;">
+        <!-- Cuenta regresiva -->
+        <p class="lead">¡Te esperamos!</p>
+        <div class="countdown" id="countdown">
+          <div class="unit"><div class="num" id="days">--</div><div class="lbl">Días</div></div>
+          <div class="unit"><div class="num" id="hours">--</div><div class="lbl">Horas</div></div>
+          <div class="unit"><div class="num" id="minutes">--</div><div class="lbl">Min</div></div>
+          <div class="unit"><div class="num" id="seconds">--</div><div class="lbl">Seg</div></div>
+        </div>
+
+        <!-- Botones -->
+        <div class="actions">
+          <a class="btn" href="https://photos.app.goo.gl/rmemgzee33QTvF9v5" target="_blank">📷 Subí tus fotos</a>
+          <a class="btn" href="https://forms.gle/VuCDhzZDUNUg1TYAA" target="_blank">✅ Confirmar asistencia</a>
+          <a class="btn ghost" href="https://open.spotify.com/playlist/0GgpcCKQAkDX0FIsYUZjC9?si=KmvRapj5TPe4ZBwHnaAbPw&pi=I5aw_ZYiTzGaM" target="_blank">🎶 Sugerí música</a>
+        </div>
+
+        <!-- Caminito -->
+        <div class="map-sequence">
+          <div class="step">
+            <div class="icon">⛪</div>
+            <div class="txt">
+              <strong><a href="https://www.google.com/maps/place/Iglesia+San+Francisco+Solano" target="_blank" style="text-decoration:none;color:inherit;">Ceremonia - Iglesia San Francisco Solano</a></strong>
+              <small>Avellaneda esquina Mendoza — 20:00 hs</small>
+            </div>
+          </div>
+
+          <svg class="pathviz" viewBox="0 0 600 120" preserveAspectRatio="none">
+            <path d="M10 70 C120 10, 240 10, 360 70 S540 130, 590 70" stroke="#e6e6e9" stroke-width="4" fill="none"/>
+          </svg>
+
+          <div class="step">
+            <div class="icon">🎉</div>
+            <div class="txt">
+              <strong><a href="https://www.google.com/maps/place/Jos%C3%A9+Hern%C3%A1ndez+2158" target="_blank" style="text-decoration:none;color:inherit;">Fiesta - José Hernández 2158</a></strong>
+              <small>21:00 hs</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Música -->
+        <div class="music">
+          <audio controls>
+            <source src="" type="audio/mpeg">
+          </audio>
+        </div>
+      </div>
+
+      <div class="footer">
+        Federico & Anahel — 12 de diciembre de 2025
+      </div>
     </div>
   </div>
 
   <script>
-    // === Cuenta regresiva corregida ===
-    const countdown = document.getElementById("countdown");
-    const weddingDate = new Date("December 12, 2025 20:00:00 GMT-0300").getTime();
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const distance = weddingDate - now;
-      if (distance <= 0) {
-        countdown.innerHTML = "¡Hoy es el gran día! 🎉<small>Nos vemos en la ceremonia</small>";
-        return;
-      }
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      countdown.innerHTML = ${days} días · ${hours}h ${minutes}m ${seconds}s <small>Hasta la ceremonia</small>;
+    const eventDate = new Date("2025-12-12T21:00:00-03:00");
+    const d=document.getElementById("days"),h=document.getElementById("hours"),m=document.getElementById("minutes"),s=document.getElementById("seconds");
+    function updateCountdown(){
+      const now=new Date();
+      const diff=eventDate-now;
+      if(diff<=0){d.textContent=h.textContent=m.textContent=s.textContent="0";return;}
+      const sec=Math.floor(diff/1000);
+      d.textContent=Math.floor(sec/86400);
+      h.textContent=String(Math.floor((sec%86400)/3600)).padStart(2,"0");
+      m.textContent=String(Math.floor((sec%3600)/60)).padStart(2,"0");
+      s.textContent=String(sec%60).padStart(2,"0");
     }
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
-
-    // === Música de fondo ===
-    const audio = document.getElementById('bg-audio');
-    const btn = document.getElementById('musicToggle');
-    function tryPlay(){
-      let playPromise = audio.play();
-      if(playPromise!==undefined){
-        playPromise.then(()=>{
-          btn.style.display='none';
-        }).catch(()=>{
-          btn.style.display='inline-block';
-          btn.textContent='Reproducir música';
-        });
-      }
-    }
-    btn.addEventListener('click',()=>{
-      if(audio.paused){
-        audio.play();
-        btn.textContent='Pausar música';
-      } else {
-        audio.pause();
-        btn.textContent='Reproducir música';
-      }
-    });
-    window.addEventListener('load',tryPlay);
+    setInterval(updateCountdown,1000);updateCountdown();
   </script>
 </body>
 </html>
